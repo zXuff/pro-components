@@ -1,11 +1,10 @@
 import React, { useRef, useCallback, useEffect, useContext } from 'react';
+import type { StepsProps, FormInstance } from 'antd';
 import { Form, Steps, ConfigProvider, Button, Space } from 'antd';
 import toArray from 'rc-util/lib/Children/toArray';
 import type { FormProviderProps } from 'antd/lib/form/context';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import type { StepsProps } from 'antd/lib/steps';
 import classNames from 'classnames';
-import type { FormInstance } from 'antd/lib/form';
 import { useIntl } from '@ant-design/pro-provider';
 import { useMountMergeState } from '@ant-design/pro-utils';
 
@@ -49,7 +48,7 @@ type StepsFormProps<T = Record<string, any>> = {
    * @param submitter 操作按钮
    */
   stepsFormRender?: (from: React.ReactNode, submitter: React.ReactNode) => React.ReactNode;
-  /** 按钮的统一配置，优先级低于分布表单的配置 */
+  /** 按钮的统一配置，优先级低于分步表单的配置 */
   submitter?:
     | SubmitterProps<{
         step: number;

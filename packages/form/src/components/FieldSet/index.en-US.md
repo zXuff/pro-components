@@ -28,51 +28,7 @@ const ProFormText = (props) => {
 
 So the props we set for ProFormText are actually for Form.Item, and the fieldProps are for the included Input, remember.
 
-In addition to display type form items, we also provide form items for combining data:
-
-## ProFormFieldSet
-
-ProFormFieldSet can combine the values of multiple children inside and store them in ProForm, and can be transformed at commit time via `transform`. Here is a simple usage to easily combine multiple input fields and format them to the desired data.
-
-```tsx | pure
-<ProFormFieldSet
-  name="list"
-  label="List of components"
-  transform={(value: any) => ({ startTime: value[0], endTime: value[1] })}
->
-  <ProFormText width="md" />
-  <ProFormText width="md" />
-  <ProFormText width="md" />
-</ProFormFieldSet
-```
-
-## ProFormDependency
-
-ProFormDependency is a simplified version of Form.Item with noStyle and shouldUpdate built in by default, we just need to configure name to determine which data we depend on and ProFormDependency will automatically handle the diff and and extract the corresponding values from the form. ProFormDependency will automatically process the diff and extract the corresponding values from the form.
-
-The name parameter must be an array, if it is a nested structure you can configure it like this `name={['name', ['name2', 'text']]}`. The value of the configured name will be passed in renderProps. `name={['name', ['name2', 'text']]}` The value of the values passed in is `{ name: string,name2: { text:string }`.
-
-```tsx | pure
-<ProFormDependency name={['name']}>
-  {({ name }) => {
-    return (
-      <ProFormSelect
-        options={[
-          {
-            value: 'chapter',
-            label: 'Effective when stamped',
-          },
-        ]}
-        width="md"
-        name="useMode"
-        label={`Contractual agreement with `${name`` to take effect `}
-      />
-    );
-  }}
-</ProFormDependency>
-```
-
-## 代码示例
+## Demo
 
 ### Full amount of form field
 

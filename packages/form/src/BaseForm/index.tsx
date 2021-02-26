@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useImperativeHandle, useState } from 'react';
+import type { FormProps, FormItemProps, FormInstance } from 'antd';
+import { ConfigProvider } from 'antd';
 import { Form } from 'antd';
-import type { FormProps, FormInstance } from 'antd/lib/form/Form';
-import type { FormItemProps } from 'antd/lib/form';
 import { ConfigProviderWrap } from '@ant-design/pro-provider';
 import type { ProFieldValueType, SearchTransformKeyFn } from '@ant-design/pro-utils';
 import { runFunction } from '@ant-design/pro-utils';
@@ -10,9 +10,8 @@ import {
   transformKeySubmitValue,
   useMountMergeState,
 } from '@ant-design/pro-utils';
-import { useUrlSearchParams } from 'use-url-search-params';
+import { useUrlSearchParams } from '@umijs/use-params';
 
-import SizeContext from 'antd/lib/config-provider/SizeContext';
 import namePathSet from 'rc-util/lib/utils/set';
 import FieldContext from '../FieldContext';
 import type { SubmitterProps } from '../components/Submitter';
@@ -92,7 +91,7 @@ function BaseForm<T = Record<string, any>>(props: BaseFormProps<T>) {
 
   const [form] = Form.useForm();
   /** 同步 url 上的参数 */
-  const [urlSearch, setUrlSearch] = useUrlSearchParams({}, {});
+  const [urlSearch, setUrlSearch] = useUrlSearchParams({});
   const formRef = useRef<FormInstance>(userForm || form);
 
   // 初始化给一个默认的 form
@@ -147,8 +146,10 @@ function BaseForm<T = Record<string, any>>(props: BaseFormProps<T>) {
   };
   useEffect(() => {
     if (isUpdate) {
-      const finalValues = transformKey(formRef.current.getFieldsValue(), omitNil);
-      onInit?.(finalValues);
+      setTimeout(() => {
+        const finalValues = transformKey(formRef.current.getFieldsValue(), omitNil);
+        onInit?.(finalValues);
+      }, 0);
     }
   }, [dateFormatter, isUpdate]);
 
@@ -171,14 +172,11 @@ function BaseForm<T = Record<string, any>>(props: BaseFormProps<T>) {
             if (Array.isArray(name)) {
               transformKeyRef.current = namePathSet(transformKeyRef.current, name, transform);
               fieldsValueType.current = namePathSet(fieldsValueType.current, name, valueType);
-            } else {
-              fieldsValueType.current[String(name)] = valueType;
-              transformKeyRef.current[String(name)] = transform;
             }
           },
         }}
       >
-        <SizeContext.Provider value={rest.size}>
+        <ConfigProvider.SizeContext.Provider value={rest.size}>
           <Form
             onKeyPress={(event) => {
               if (event.key === 'Enter') {
@@ -239,7 +237,7 @@ function BaseForm<T = Record<string, any>>(props: BaseFormProps<T>) {
             </Form.Item>
             {content}
           </Form>
-        </SizeContext.Provider>
+        </ConfigProvider.SizeContext.Provider>
       </FieldContext.Provider>
     </ConfigProviderWrap>
   );

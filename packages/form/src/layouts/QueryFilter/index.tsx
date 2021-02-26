@@ -17,7 +17,7 @@ const CONFIG_SPAN_BREAKPOINTS = {
   xs: 513,
   sm: 513,
   md: 785,
-  lg: 1057,
+  lg: 992,
   xl: 1057,
   xxl: Infinity,
 };
@@ -151,8 +151,8 @@ const QueryFilterContent: React.FC<{
   defaultCollapsed: boolean;
   onCollapse: undefined | ((collapsed: boolean) => void);
   collapsed: boolean | undefined;
-  resetText?: string;
-  searchText?: string;
+  resetText: string | undefined;
+  searchText: string | undefined;
   split?: boolean;
   form: FormInstance<any>;
   items: React.ReactNode[];
@@ -382,6 +382,8 @@ function QueryFilter<T = Record<string, any>>(props: QueryFilterProps<T>) {
             submitter={renderSubmitter}
             items={items}
             split={split}
+            resetText={props.resetText}
+            searchText={props.searchText}
             preserve={preserve}
             ignoreRules={ignoreRules}
             showLength={showLength}

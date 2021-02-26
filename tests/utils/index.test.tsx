@@ -4,6 +4,7 @@ import {
   parseValueToMoment,
   transformKeySubmitValue,
   isNil,
+  isUrl,
   InlineErrorFormItem,
   useDebounceFn,
   pickProProps,
@@ -412,7 +413,7 @@ describe('utils', () => {
     const dataIn = {
       dataTime: '2019-11-16 12:50:26',
       time: '2019-11-16 12:50:26',
-      file: file,
+      file,
       files: [file],
     };
     const html = transformKeySubmitValue(dataIn, {
@@ -431,5 +432,14 @@ describe('utils', () => {
     expect(isNil('')).toBe(false);
     expect(isNil({})).toBe(false);
     expect(isNil(true)).toBe(false);
+  });
+
+  it('isUrl', async () => {
+    expect(isUrl('https://procomponents.ant.design/components/layout')).toBe(true);
+    expect(isUrl('https://procomponents.ant.design/en-US/components/layout#basic-usage')).toBe(
+      true,
+    );
+    expect(isUrl('procomponents.ant.design/en-US/components/layout')).toBe(false);
+    expect(isUrl('https:://procomponents.ant.design/en-US/components/layout')).toBe(false);
   });
 });

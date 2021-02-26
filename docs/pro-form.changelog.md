@@ -9,6 +9,43 @@ group:
 
 # Change Log
 
+## @ant-design/pro-form@1.16.2
+
+`2021-02-25`
+
+- 🐛 fix(form): fix ligthfilter label error [#1998](https://github.com/ant-design/pro-components/pull/1998) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): form list support formlist [#1995](https://github.com/ant-design/pro-components/pull/1995) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): fix placeholder no work error [#1991](https://github.com/ant-design/pro-components/pull/1991) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-form@1.16.1
+
+`2021-02-23`
+
+- 🐛 fix(form): fix error onchange params [#1955](https://github.com/ant-design/pro-components/pull/1955) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): fix breakpoint xl width error [#1946](https://github.com/ant-design/pro-components/pull/1946) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): modelForm and DrawerForm stopPropagation [#1939](https://github.com/ant-design/pro-components/pull/1939) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-form@1.16.0
+
+`2021-02-22`
+
+- 🐛 fix(form): fix error message no work error [#1875](https://github.com/ant-design/pro-components/pull/1875) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): fix searchText and resetText no work error [#1872](https://github.com/ant-design/pro-components/pull/1872) [@chenshuai2144](https://github.com/chenshuai2144)
+- 💥 feat(form): support form list [#1908](https://github.com/ant-design/pro-components/pull/1908) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-form@1.15.4
+
+`2021-02-04`
+
+- 🐛 fix(form): fix form control error [#1833](https://github.com/ant-design/pro-components/pull/1833) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(form): modal and drawer form close not reset [#1827](https://github.com/ant-design/pro-components/pull/1827) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-form@1.15.2
+
+`2021-01-25`
+
+- fix: ignore Blob type [#1722](https://github.com/ant-design/pro-components/pull/1722) [@eynol](https://github.com/eynol)
+
 ## @ant-design/pro-form@1.15.0
 
 `2021-01-21`

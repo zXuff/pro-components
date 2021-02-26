@@ -19,19 +19,19 @@ import FieldDatePicker from './components/DatePicker';
 import FieldFromNow from './components/FromNow';
 import FieldRangePicker from './components/RangePicker';
 import FieldCode from './components/Code';
-import FieldTimePicker from './components/TimePicker';
+import FieldTimePicker, { FieldTimeRangePicker } from './components/TimePicker';
 import FieldText from './components/Text';
 import FieldTextArea from './components/TextArea';
 import FieldPassword from './components/Password';
 import FieldStatus from './components/Status';
 import FieldOptions from './components/Options';
-import FiledSelect, {
+import FieldSelect, {
   proFieldParsingText,
   proFieldParsingValueEnumToArray,
 } from './components/Select';
-import FiledCheckbox from './components/Checkbox';
-import FiledRate from './components/Rate';
-import FiledSwitch from './components/Switch';
+import FieldCheckbox from './components/Checkbox';
+import FieldRate from './components/Rate';
+import FieldSwitch from './components/Switch';
 import FieldDigit from './components/Digit';
 import FieldSecond from './components/Second';
 
@@ -223,6 +223,11 @@ const defaultRenderText = (
     return <FieldTimePicker text={text as string} format="HH:mm:ss" {...props} />;
   }
 
+  /** 如果是时间类型的值 */
+  if (valueType === 'timeRange') {
+    return <FieldTimeRangePicker text={text as string[]} format="HH:mm:ss" {...props} />;
+  }
+
   if (valueType === 'fromNow') {
     return <FieldFromNow text={text as string} {...props} />;
   }
@@ -268,11 +273,11 @@ const defaultRenderText = (
   }
 
   if (valueType === 'select' || (valueType === 'text' && (props.valueEnum || props.request))) {
-    return <FiledSelect text={text as string} {...props} />;
+    return <FieldSelect text={text as string} {...props} />;
   }
 
   if (valueType === 'checkbox') {
-    return <FiledCheckbox text={text as string} {...props} />;
+    return <FieldCheckbox text={text as string} {...props} />;
   }
 
   if (valueType === 'radio') {
@@ -284,10 +289,10 @@ const defaultRenderText = (
   }
 
   if (valueType === 'rate') {
-    return <FiledRate text={text as string} {...props} />;
+    return <FieldRate text={text as string} {...props} />;
   }
   if (valueType === 'switch') {
-    return <FiledSwitch text={text as boolean} {...props} />;
+    return <FieldSwitch text={text as boolean} {...props} />;
   }
 
   if (valueType === 'option') {
@@ -339,7 +344,7 @@ const ProField: React.ForwardRefRenderFunction<any, ProFieldPropsType> = (
           ...rest,
           mode: rest.mode || 'read',
           ref,
-          placeholder: intl.getMessage('tableForm.inputPlaceholder', '请输入'),
+          placeholder: rest.placeholder || intl.getMessage('tableForm.inputPlaceholder', '请输入'),
           fieldProps: pickProProps(fieldProps),
         },
         context.valueTypeMap,
@@ -359,7 +364,7 @@ export {
   FieldTimePicker,
   FieldText,
   FieldStatus,
-  FiledSelect,
+  FieldSelect,
   proFieldParsingText,
   proFieldParsingValueEnumToArray,
 };

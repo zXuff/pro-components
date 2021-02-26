@@ -8,7 +8,7 @@ import { act } from 'react-dom/test-utils';
 import { waitForComponentToPaint, waitTime } from '../util';
 
 type DataSourceType = {
-  id: number;
+  id: number | string;
   title?: string;
   labels?: {
     name: string;
@@ -386,6 +386,50 @@ describe('EditorProTable', () => {
     expect(fn).toBeCalledWith(624748504);
   });
 
+  it('📝 support onValuesChange when is string key', async () => {
+    const fn = jest.fn();
+    const wrapper = mount(
+      <EditableProTable<DataSourceType>
+        rowKey="id"
+        recordCreatorProps={false}
+        columns={columns}
+        value={[
+          {
+            id: '02',
+            title: '🐛 [BUG]yarn install命令 antd2.4.5会报错',
+            labels: [{ name: 'bug', color: 'error' }],
+            time: {
+              created_at: '2020-05-26T09:42:56Z',
+            },
+            state: 'processing',
+          },
+        ]}
+        editable={{
+          editableKeys: ['02'],
+          onValuesChange: (record) => {
+            fn(record.id);
+          },
+        }}
+      />,
+    );
+    await waitForComponentToPaint(wrapper, 1000);
+
+    act(() => {
+      wrapper
+        .find('.ant-table-tbody tr.ant-table-row')
+        .at(0)
+        .find(`td .ant-input`)
+        .at(0)
+        .simulate('change', {
+          target: {
+            value: 'qixian',
+          },
+        });
+    });
+
+    expect(fn).toBeCalledWith('02');
+  });
+
   it('📝 support newRecordType = dataSource', async () => {
     const fn = jest.fn();
     const wrapper = mount(
@@ -505,6 +549,51 @@ describe('EditorProTable', () => {
       />,
     );
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('📝 columns initialValue alway work', async () => {
+    const wrapper = mount(
+      <EditableProTable
+        rowKey="id"
+        editable={{
+          editableKeys: [624748504],
+        }}
+        columns={[
+          {
+            // dataIndex 存在有数据，不显示 initialValue
+            dataIndex: 'index',
+            valueType: 'text',
+            width: 48,
+            initialValue: '123',
+          },
+          {
+            // dataIndex 不存在就没有数据显示 initialValue
+            dataIndex: 'xxx2',
+            valueType: 'text',
+            width: 48,
+            formItemProps: {
+              initialValue: '123',
+            },
+          },
+          {
+            // dataIndex 不存在就没有数据显示 initialValue
+            dataIndex: 'xxx',
+            valueType: 'text',
+            width: 48,
+            formItemProps: () => {
+              return { initialValue: '1234' };
+            },
+          },
+        ]}
+        value={defaultData}
+      />,
+    );
+
+    await waitForComponentToPaint(wrapper, 1200);
+
+    act(() => {
+      expect(wrapper.render()).toMatchSnapshot();
+    });
   });
 
   it('📝 support editorRowKeys', async () => {

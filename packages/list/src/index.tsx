@@ -1,11 +1,10 @@
 import React, { useMemo, useContext, useRef, useImperativeHandle } from 'react';
-import type { ListProps } from 'antd/lib/list';
+import type { ListProps, PaginationProps } from 'antd';
 import classNames from 'classnames';
 import type { ProTableProps, ProColumnType, ActionType } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
 import type { ParamsType } from '@ant-design/pro-provider';
 import { ConfigProvider, Form } from 'antd';
-import type { PaginationConfig } from 'antd/lib/pagination';
 
 import ListView from './ListView';
 
@@ -57,9 +56,10 @@ function ProList<
     search = false,
     expandable,
     showActions,
-    rowSelection,
+    rowSelection: propRowSelection = false,
     pagination: propsPagination = false,
     itemLayout,
+    renderItem,
     grid,
     ...rest
   } = props;
@@ -106,6 +106,7 @@ function ProList<
       {...(rest as any)}
       actionRef={actionRef}
       pagination={propsPagination}
+      rowSelection={propRowSelection}
       search={search}
       options={options}
       className={classNames(prefixCls, className, listClassName)}
@@ -121,23 +122,24 @@ function ProList<
           padding: '0 24px',
         },
       }}
-      tableViewRender={({ columns, size, pagination, dataSource, loading }) => {
+      tableViewRender={({ columns, size, pagination, rowSelection, dataSource, loading }) => {
         return (
           <Form component={false}>
             <ListView
               grid={grid}
               prefixCls={prefixCls}
               columns={columns}
+              renderItem={renderItem}
               actionRef={actionRef}
-              dataSource={dataSource || []}
+              dataSource={(dataSource || []) as RecordType[]}
               size={size as 'large'}
               footer={footer}
               split={split}
               rowKey={rowKey}
               expandable={expandable}
-              rowSelection={rowSelection === false ? undefined : rowSelection}
+              rowSelection={rowSelection}
               showActions={showActions}
-              pagination={pagination as PaginationConfig}
+              pagination={pagination as PaginationProps}
               itemLayout={itemLayout}
               loading={loading}
             />

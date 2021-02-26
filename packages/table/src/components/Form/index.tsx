@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useCallback, useState, useMemo } from 'react';
-import type { FormInstance, FormItemProps } from 'antd/lib/form';
+import type { FormInstance, FormItemProps } from 'antd';
 import { ConfigProvider } from 'antd';
 import type { IntlType } from '@ant-design/pro-provider';
 import { useIntl } from '@ant-design/pro-provider';
@@ -78,15 +78,15 @@ const getFromProps = (isForm: boolean, searchConfig: any, name: string) => {
  * 从formConfig中获取传给相应表单的配置
  *
  * @param isForm
- * @param formCofig
+ * @param formConfig
  */
-const getFormConfigs = (isForm: boolean, formCofig: any) => {
+const getFormConfigs = (isForm: boolean, formConfig: any) => {
   if (isForm) {
     // 传给Form的配置
-    return omit(formCofig, ['ignoreRules']);
+    return omit(formConfig, ['ignoreRules']);
   }
   // 传给Filter的配置
-  return { ignoreRules: true, ...formCofig };
+  return { ignoreRules: true, ...formConfig };
 };
 
 export type TableFormItem<T, U = any> = {
@@ -120,7 +120,6 @@ export const formInputRender: React.FC<{
   [key: string]: any;
 }> = (props, ref: any) => {
   const { item, intl, form, type, formItemProps: propsFormItemProps, ...rest } = props;
-
   const formItemProps = getFieldPropsOrFormItemProps(
     propsFormItemProps,
     form,
@@ -162,17 +161,23 @@ export const formInputRender: React.FC<{
         },
       });
 
+    /** 拼接 renderFormItem 的配置 */
+    const renderFormItemProps = omit(
+      {
+        ...rest,
+        type,
+        defaultRender,
+      } as any,
+      ['colSize'],
+    ) as any;
+
     // 自动注入 onChange 和 value，用户自己很有可能忘记
     const dom = renderFormItem(
       {
         ...restItem,
         type: 'form',
       },
-      {
-        ...rest,
-        type,
-        defaultRender,
-      },
+      renderFormItemProps,
       form as any,
     ) as React.ReactElement;
 
@@ -347,7 +352,7 @@ const FormSearch = <T, U = any>({
         .map((item, index) =>
           proFormItemRender({
             isForm,
-            formInstance: formRef.current,
+            formInstance: formRef.current || undefined,
             item: {
               index,
               ...item,

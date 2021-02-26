@@ -77,14 +77,11 @@ export default () => {
   return (
     <>
       <EditableProTable<DataSourceType>
-        rowKey="id"
         headerTitle="可编辑表格"
         columns={columns}
+        rowKey="id"
         value={dataSource}
-        onChange={(data) => {
-          setEditableRowKeys(data.map((item) => item.id));
-          setDataSource(data);
-        }}
+        onChange={setDataSource}
         recordCreatorProps={{
           newRecordType: 'dataSource',
           record: () => ({
@@ -108,8 +105,8 @@ export default () => {
         editable={{
           type: 'multiple',
           editableKeys,
-          actionRender: (row, config, doms) => {
-            return [doms.delete];
+          actionRender: (row, config, defaultDoms) => {
+            return [defaultDoms.delete];
           },
           onValuesChange: (record, recordList) => {
             setDataSource(recordList);

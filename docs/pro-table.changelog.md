@@ -9,6 +9,49 @@ group:
 
 # Change Log
 
+## @ant-design/pro-table@2.30.1
+
+`2021-02-23`
+
+- 🐛 fix(table): manualRequest may not working. [#1963](https://github.com/ant-design/pro-components/pull/1963) [@lxzxl](https://github.com/lxzxl)
+- 💥 feat(table): remove unnecessary tooltip [#1907](https://github.com/ant-design/pro-components/pull/1907) [@beichensky](https://github.com/beichensky)
+- 🐛 fix(table): export Table.Summary [#1943](https://github.com/ant-design/pro-components/pull/1943) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-table@2.30.0
+
+`2021-02-22`
+
+- 🐛 fix(table): fix the problem of onInit call sequence [#1889](https://github.com/ant-design/pro-components/pull/1889) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(table): no has colSize on renderFormItem [#1876](https://github.com/ant-design/pro-components/pull/1876) [@chenshuai2144](https://github.com/chenshuai2144)
+- 💥 feat(table): editable support form config [#1879](https://github.com/ant-design/pro-components/pull/1879) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-table@2.29.0
+
+`2021-02-04`
+
+- 🐛 fix(table): fix toNumber will gen 0 start number [#1850](https://github.com/ant-design/pro-components/pull/1850) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(table): fix table unmount warning [#1840](https://github.com/ant-design/pro-components/pull/1840) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(table): fix editabletable initialValue alaway rewirte [#1834](https://github.com/ant-design/pro-components/pull/1834) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(table): fix table no close loading when error [#1832](https://github.com/ant-design/pro-components/pull/1832) [@chenshuai2144](https://github.com/chenshuai2144)
+- 💥 feat(table): actionRef add pageInfo [#1851](https://github.com/ant-design/pro-components/pull/1851) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-table@2.28.0
+
+`2021-02-02`
+
+- 🐛 fix(table): LightFilter dosn't render if options={false} [#1802](https://github.com/ant-design/pro-components/pull/1802) [@ChenCheng220](https://github.com/ChenCheng220)
+- 🐛 fix(table): reset messageVariables to label [#1773](https://github.com/ant-design/pro-components/pull/1773) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(table): fix fieldProps no has bug [#1776](https://github.com/ant-design/pro-components/pull/1776) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(table): fix manualRequest always show loading error [#1767](https://github.com/ant-design/pro-components/pull/1767) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-table@2.27.2
+
+`2021-01-25`
+
+- 🐛 fix(table): fix the problem that it still executes when polling=false [#1747](https://github.com/ant-design/pro-components/pull/1747) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(table): fix polling times [#1739](https://github.com/ant-design/pro-components/pull/1739) [@chenshuai2144](https://github.com/chenshuai2144)
+- 🐛 fix(table): fix column dragger problem [#1730](https://github.com/ant-design/pro-components/pull/1730) [@ChenCheng220](https://github.com/ChenCheng220)
+
 ## @ant-design/pro-table@2.27.0
 
 `2021-01-21`

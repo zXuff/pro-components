@@ -82,7 +82,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/base.tsx correctly 1`
                   >
                     <div
                       class="ant-pro-list-row-show-action-hover ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-show-action-hover ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -213,7 +234,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/base.tsx correctly 1`
                   >
                     <div
                       class="ant-pro-list-row-show-action-hover ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-show-action-hover ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -344,7 +386,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/base.tsx correctly 1`
                   >
                     <div
                       class="ant-pro-list-row-show-action-hover ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-show-action-hover ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -475,7 +538,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/base.tsx correctly 1`
                   >
                     <div
                       class="ant-pro-list-row-show-action-hover ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-show-action-hover ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -1497,7 +1581,7 @@ exports[`list demos 📸 renders ./packages/list/src/demos/card-list.tsx correct
             <li
               aria-disabled="true"
               class="ant-pagination-prev ant-pagination-disabled"
-              title="Previous Page"
+              title="上一页"
             >
               <button
                 class="ant-pagination-item-link"
@@ -1540,7 +1624,7 @@ exports[`list demos 📸 renders ./packages/list/src/demos/card-list.tsx correct
             <li
               aria-disabled="true"
               class="ant-pagination-next ant-pagination-disabled"
-              title="Next Page"
+              title="下一页"
             >
               <button
                 class="ant-pagination-item-link"
@@ -1638,7 +1722,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/editable.tsx correctl
                   >
                     <div
                       class="ant-pro-list-row-show-action-hover ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-show-action-hover ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -1744,7 +1849,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/editable.tsx correctl
                   >
                     <div
                       class="ant-pro-list-row-show-action-hover ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-show-action-hover ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -1850,7 +1976,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/editable.tsx correctl
                   >
                     <div
                       class="ant-pro-list-row-show-action-hover ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-show-action-hover ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -1956,7 +2103,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/editable.tsx correctl
                   >
                     <div
                       class="ant-pro-list-row-show-action-hover ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-show-action-hover ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -2143,6 +2311,26 @@ exports[`list demos 📸 renders ./packages/list/src/demos/expand.tsx correctly 
                     <div
                       class="ant-pro-list-row-header-option"
                     >
+                      <div
+                        class="ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
                       <span
                         class="ant-pro-list-row-expand-icon ant-pro-list-row-collapsed"
                       >
@@ -2254,6 +2442,26 @@ exports[`list demos 📸 renders ./packages/list/src/demos/expand.tsx correctly 
                     <div
                       class="ant-pro-list-row-header-option"
                     >
+                      <div
+                        class="ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
                       <span
                         class="ant-pro-list-row-expand-icon ant-pro-list-row-collapsed"
                       >
@@ -2365,6 +2573,26 @@ exports[`list demos 📸 renders ./packages/list/src/demos/expand.tsx correctly 
                     <div
                       class="ant-pro-list-row-header-option"
                     >
+                      <div
+                        class="ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
                       <span
                         class="ant-pro-list-row-expand-icon ant-pro-list-row-collapsed"
                       >
@@ -2476,6 +2704,26 @@ exports[`list demos 📸 renders ./packages/list/src/demos/expand.tsx correctly 
                     <div
                       class="ant-pro-list-row-header-option"
                     >
+                      <div
+                        class="ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
                       <span
                         class="ant-pro-list-row-expand-icon ant-pro-list-row-collapsed"
                       >
@@ -2741,7 +2989,7 @@ exports[`list demos 📸 renders ./packages/list/src/demos/filter.tsx correctly 
                                         <span
                                           class="ant-select-selection-placeholder"
                                         >
-                                          状态
+                                          请输入
                                         </span>
                                       </div>
                                       <span
@@ -2885,7 +3133,7 @@ exports[`list demos 📸 renders ./packages/list/src/demos/filter.tsx correctly 
                 <div
                   class="ant-empty-description"
                 >
-                  No Data
+                  暂无数据
                 </div>
               </div>
             </div>
@@ -2906,7 +3154,7 @@ exports[`list demos 📸 renders ./packages/list/src/demos/filter.tsx correctly 
             <li
               aria-disabled="true"
               class="ant-pagination-prev ant-pagination-disabled"
-              title="Previous Page"
+              title="上一页"
             >
               <button
                 class="ant-pagination-item-link"
@@ -2949,7 +3197,7 @@ exports[`list demos 📸 renders ./packages/list/src/demos/filter.tsx correctly 
             <li
               aria-disabled="true"
               class="ant-pagination-next ant-pagination-disabled"
-              title="Next Page"
+              title="下一页"
             >
               <button
                 class="ant-pagination-item-link"
@@ -3009,9 +3257,9 @@ exports[`list demos 📸 renders ./packages/list/src/demos/filter.tsx correctly 
                   </span>
                   <span
                     class="ant-select-selection-item"
-                    title="5 / page"
+                    title="5 条/页"
                   >
-                    5 / page
+                    5 条/页
                   </span>
                 </div>
                 <span
@@ -3135,7 +3383,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/layout.tsx correctly 
                     >
                       <div
                         class="ant-pro-list-row-header-option"
-                      />
+                      >
+                        <div
+                          class="ant-pro-list-row-checkbox"
+                        >
+                          <label
+                            class="ant-checkbox-wrapper"
+                          >
+                            <span
+                              class="ant-checkbox"
+                            >
+                              <input
+                                class="ant-checkbox-input"
+                                type="checkbox"
+                                value=""
+                              />
+                              <span
+                                class="ant-checkbox-inner"
+                              />
+                            </span>
+                          </label>
+                        </div>
+                      </div>
                       <div
                         class="ant-list-item-meta"
                       >
@@ -3309,7 +3578,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/layout.tsx correctly 
                     >
                       <div
                         class="ant-pro-list-row-header-option"
-                      />
+                      >
+                        <div
+                          class="ant-pro-list-row-checkbox"
+                        >
+                          <label
+                            class="ant-checkbox-wrapper"
+                          >
+                            <span
+                              class="ant-checkbox"
+                            >
+                              <input
+                                class="ant-checkbox-input"
+                                type="checkbox"
+                                value=""
+                              />
+                              <span
+                                class="ant-checkbox-inner"
+                              />
+                            </span>
+                          </label>
+                        </div>
+                      </div>
                       <div
                         class="ant-list-item-meta"
                       >
@@ -3483,7 +3773,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/layout.tsx correctly 
                     >
                       <div
                         class="ant-pro-list-row-header-option"
-                      />
+                      >
+                        <div
+                          class="ant-pro-list-row-checkbox"
+                        >
+                          <label
+                            class="ant-checkbox-wrapper"
+                          >
+                            <span
+                              class="ant-checkbox"
+                            >
+                              <input
+                                class="ant-checkbox-input"
+                                type="checkbox"
+                                value=""
+                              />
+                              <span
+                                class="ant-checkbox-inner"
+                              />
+                            </span>
+                          </label>
+                        </div>
+                      </div>
                       <div
                         class="ant-list-item-meta"
                       >
@@ -3657,7 +3968,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/layout.tsx correctly 
                     >
                       <div
                         class="ant-pro-list-row-header-option"
-                      />
+                      >
+                        <div
+                          class="ant-pro-list-row-checkbox"
+                        >
+                          <label
+                            class="ant-checkbox-wrapper"
+                          >
+                            <span
+                              class="ant-checkbox"
+                            >
+                              <input
+                                class="ant-checkbox-input"
+                                type="checkbox"
+                                value=""
+                              />
+                              <span
+                                class="ant-checkbox-inner"
+                              />
+                            </span>
+                          </label>
+                        </div>
+                      </div>
                       <div
                         class="ant-list-item-meta"
                       >
@@ -3887,7 +4219,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/pagination.tsx correc
                   >
                     <div
                       class="ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -4035,7 +4388,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/pagination.tsx correc
                   >
                     <div
                       class="ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -4183,7 +4557,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/pagination.tsx correc
                   >
                     <div
                       class="ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -4331,7 +4726,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/pagination.tsx correc
                   >
                     <div
                       class="ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -4479,7 +4895,28 @@ exports[`list demos 📸 renders ./packages/list/src/demos/pagination.tsx correc
                   >
                     <div
                       class="ant-pro-list-row-header-option"
-                    />
+                    >
+                      <div
+                        class="ant-pro-list-row-checkbox"
+                      >
+                        <label
+                          class="ant-checkbox-wrapper"
+                        >
+                          <span
+                            class="ant-checkbox"
+                          >
+                            <input
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                              value=""
+                            />
+                            <span
+                              class="ant-checkbox-inner"
+                            />
+                          </span>
+                        </label>
+                      </div>
+                    </div>
                     <div
                       class="ant-list-item-meta"
                     >
@@ -4634,7 +5071,7 @@ exports[`list demos 📸 renders ./packages/list/src/demos/pagination.tsx correc
             <li
               aria-disabled="true"
               class="ant-pagination-prev ant-pagination-disabled"
-              title="Previous Page"
+              title="上一页"
             >
               <button
                 class="ant-pagination-item-link"
@@ -4689,7 +5126,7 @@ exports[`list demos 📸 renders ./packages/list/src/demos/pagination.tsx correc
               aria-disabled="false"
               class="ant-pagination-next"
               tabindex="0"
-              title="Next Page"
+              title="下一页"
             >
               <button
                 class="ant-pagination-item-link"
@@ -4748,9 +5185,9 @@ exports[`list demos 📸 renders ./packages/list/src/demos/pagination.tsx correc
                   </span>
                   <span
                     class="ant-select-selection-item"
-                    title="5 / page"
+                    title="5 条/页"
                   >
-                    5 / page
+                    5 条/页
                   </span>
                 </div>
                 <span

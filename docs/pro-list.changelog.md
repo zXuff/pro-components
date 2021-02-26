@@ -9,6 +9,32 @@ group:
 
 # Change Log
 
+## @ant-design/pro-list@1.5.3
+
+`2021-02-25`
+
+- 🐛 fix(list): list selectedRow [#1967](https://github.com/ant-design/pro-components/pull/1967) [@xiaohuoni](https://github.com/xiaohuoni)
+
+## @ant-design/pro-list@1.5.1
+
+`2021-02-22`
+
+- 💥 feat(form): support form list [#1908](https://github.com/ant-design/pro-components/pull/1908) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-list@1.5.0
+
+`2021-02-04`
+
+- 🐛 fix(list): fix list item no key error [#1836](https://github.com/ant-design/pro-components/pull/1836) [@chenshuai2144](https://github.com/chenshuai2144)
+- 💥 feat(list): ProList support renderItem [#1824](https://github.com/ant-design/pro-components/pull/1824) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-list@1.4.0
+
+`2021-02-02`
+
+- 💥 feat(list): proList support checkox alert [#1821](https://github.com/ant-design/pro-components/pull/1821) [@chenshuai2144](https://github.com/chenshuai2144)
+- ✨ feat(list): support expandIcon(#1710) [#1771](https://github.com/ant-design/pro-components/pull/1771) [@DerrickTel](https://github.com/DerrickTel)
+
 ## @ant-design/pro-list@1.3.0
 
 `2021-01-18`

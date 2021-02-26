@@ -26,61 +26,17 @@ const ProFormText = (props) => {
 };
 ```
 
-所以我们给 ProFormText 设置的 props 其实是 Form.Item 的，fieldProps 才是包含的 Input 的，要切记。
-
-除了展示型的表单项,我们还提供了用来组合数据的表单项:
-
-## ProFormFieldSet
-
-ProFormFieldSet 可以将内部的多个 children 的值组合并且存储在 ProForm 中，并且可以通过 `transform` 在提交时转化。下面是一个简单的用法,可以方便的组合多个输入框，并且格式化为想要的数据。
-
-```tsx | pure
-<ProFormFieldSet
-  name="list"
-  label="组件列表"
-  transform={(value: any) => ({ startTime: value[0], endTime: value[1] })}
->
-  <ProFormText width="md" />
-  <ProFormText width="md" />
-  <ProFormText width="md" />
-</ProFormFieldSet>
-```
-
-## ProFormDependency
-
-ProFormDependency 是一个简化版本的 Form.Item，它默认内置了 noStyle 与 shouldUpdate，我们只需要配置 name 来确定我们依赖哪个数据，ProFormDependency 会自动处理 diff 和并且从表单中提取相应的值。
-
-name 参数必须要是一个数组，如果是嵌套的结构可以这样配置 `name={['name', ['name2', 'text']]}`。配置的 name 的值会在 renderProps 中传入。`name={['name', ['name2', 'text']]}` 传入的 values 的值 为 `{ name: string,name2: { text:string } }`。
-
-```tsx | pure
-<ProFormDependency name={['name']}>
-  {({ name }) => {
-    return (
-      <ProFormSelect
-        options={[
-          {
-            value: 'chapter',
-            label: '盖章后生效',
-          },
-        ]}
-        width="md"
-        name="useMode"
-        label={`与《${name》合同约定生效方式`}
-      />
-    );
-  }}
-</ProFormDependency>
-```
+所以我们给 ProFormText 设置的 props 其实是 Form.Item 的，fieldProps 才是包含的组件的，要切记。
 
 ## 代码示例
 
 ### 全量的表单项
 
-<code src="./demos/components-other.tsx" heigh="1774px"/>
+<code src="./demos/components-other.tsx" heigh="1774px" title="全量的表单项"/>
 
 ### 表单项的只读
 
-<code src="./demos/components-other-readonly.tsx" heigh="1774px"/>
+<code src="./demos/components-other-readonly.tsx" heigh="1774px" title="表单项的只读" />
 
 ## API
 
@@ -196,10 +152,11 @@ ProFormCaptcha 是为了支持中后台中常见的验证码功能开发的组�
 
 ### ProFormTimePicker
 
-与 [DatePicker](https://ant.design/components/date-picker-cn/) 相同
+与 [DatePicker](https://ant.design/components/time-picker-cn/) 相同
 
 ```tsx | pure
-<ProFormDateRangePicker name="time" label="时间" />
+<ProFormTimePicker name="time" label="时间" />
+<ProFormTimePicker.RangePicker name="timeRange" label="时间区间" />
 ```
 
 ### ProFormTextArea

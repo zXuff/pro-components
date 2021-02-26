@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { ConfigProvider as AntdConfigProvider } from 'antd';
-
-import { noteOnce } from 'rc-util/lib/warning';
+import zh_CN from 'antd/lib/locale/zh_CN';
 
 import arEG from './locale/ar_EG';
 import zhCN from './locale/zh_CN';
@@ -210,12 +209,10 @@ const findIntlKeyByAntdLocaleKey = (localeKey: string | undefined) => {
     return 'zh-CN';
   }
   const localeName = localeKey.toLocaleLowerCase();
-  return (
-    intlMapKeys.find((intlKey) => {
-      const LowerCaseKey = intlKey.toLocaleLowerCase();
-      return LowerCaseKey.includes(localeName);
-    }) || 'zh-CN'
-  );
+  return intlMapKeys.find((intlKey) => {
+    const LowerCaseKey = intlKey.toLocaleLowerCase();
+    return LowerCaseKey.includes(localeName);
+  });
 };
 
 /**
@@ -225,6 +222,8 @@ const findIntlKeyByAntdLocaleKey = (localeKey: string | undefined) => {
  */
 const ConfigProviderWrap: React.FC<Record<string, unknown>> = ({ children }) => {
   const { locale } = useContext(AntdConfigProvider.ConfigContext);
+  // 如果 locale 不存在自动注入的 AntdConfigProvider
+  const Provider = locale === undefined ? AntdConfigProvider : React.Fragment;
   return (
     <ConfigConsumer>
       {(value) => {
@@ -233,17 +232,27 @@ const ConfigProviderWrap: React.FC<Record<string, unknown>> = ({ children }) => 
         // antd 的 key 存在的时候以 antd 的为主
         const intl =
           localeName && value.intl?.locale === 'default'
-            ? intlMap[key]
-            : value.intl || intlMap[key];
+            ? intlMap[key!]
+            : value.intl || intlMap[key!];
+
+        // 自动注入 antd 的配置
+        const configProvider =
+          locale === undefined
+            ? {
+                locale: zh_CN,
+              }
+            : {};
         return (
-          <ConfigProvider
-            value={{
-              ...value,
-              intl: intl || zhCNIntl,
-            }}
-          >
-            {children}
-          </ConfigProvider>
+          <Provider {...configProvider}>
+            <ConfigProvider
+              value={{
+                ...value,
+                intl: intl || zhCNIntl,
+              }}
+            >
+              {children}
+            </ConfigProvider>
+          </Provider>
         );
       }}
     </ConfigConsumer>
@@ -254,39 +263,6 @@ export { ConfigConsumer, ConfigProvider, ConfigProviderWrap, createIntl };
 
 export function useIntl(): IntlType {
   const context = useContext(ConfigContext);
-  noteOnce(
-    !!context.intl,
-    `
-为了提升兼容性  
-<IntlProvider value={zhCNIntl}/>
-需要修改为:
-<ConfigProvider
-  value={{
-    intl: zhCNIntl,
-  }}
-/>
-我们将会在下个版本中删除它
-    `,
-  );
-
-  noteOnce(
-    !!context.intl,
-    `
-To improve compatibility
-  <IntlProvider value={zhCNIntl}/>
-Need to be modified to:
-  <ConfigProvider
-    value={{
-      intl: zhCNIntl,
-    }}
-  />
-We will remove it in the next version
-    `,
-  );
-
-  if (!context.intl) {
-    return ((context as unknown) as IntlType) || zhCNIntl;
-  }
   return context.intl || zhCNIntl;
 }
 

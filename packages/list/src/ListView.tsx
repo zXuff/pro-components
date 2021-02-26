@@ -1,8 +1,7 @@
 import React from 'react';
+import type { ListProps, TableColumnType, TableProps } from 'antd';
 import { List } from 'antd';
 import type { GetRowKey } from 'antd/lib/table/interface';
-import type { ListProps } from 'antd/lib/list';
-import type { ColumnType, TableProps } from 'antd/es/table';
 import type { ActionType } from '@ant-design/pro-table';
 import get from 'rc-util/lib/utils/get';
 import useLazyKVMap from 'antd/lib/table/hooks/useLazyKVMap';
@@ -21,7 +20,7 @@ export type ListViewProps<RecordType> = AntdListProps<RecordType> &
     showActions?: 'hover' | 'always';
     rowSelection?: TableProps<RecordType>['rowSelection'];
     prefixCls: string;
-    dataSource: RecordType[];
+    dataSource: readonly RecordType[];
     actionRef: React.MutableRefObject<ActionType | undefined>;
   };
 
@@ -33,6 +32,7 @@ function ListView<RecordType>(props: ListViewProps<RecordType>) {
     showActions,
     prefixCls,
     actionRef,
+    renderItem,
     expandable: expandableConfig,
     rowSelection,
     pagination, // List 的 pagination 默认是 false
@@ -101,7 +101,7 @@ function ListView<RecordType>(props: ListViewProps<RecordType>) {
 
   const [innerExpandedKeys, setInnerExpandedKeys] = React.useState<Key[]>(() => {
     if (defaultExpandedRowKeys) {
-      return defaultExpandedRowKeys;
+      return defaultExpandedRowKeys as Key[];
     }
     if (defaultExpandAllRows !== false) {
       return dataSource.map(getRowKey);
@@ -146,11 +146,14 @@ function ListView<RecordType>(props: ListViewProps<RecordType>) {
       dataSource={pageData}
       pagination={pagination && (mergedPagination as ListViewProps<RecordType>['pagination'])}
       renderItem={(item, index) => {
+        if (renderItem) {
+          return renderItem(item, index);
+        }
         const listItemProps = {};
-        columns?.forEach((column: ColumnType<RecordType>) => {
+        columns?.forEach((column: TableColumnType<RecordType>) => {
           PRO_LIST_KEYS.forEach((key) => {
             if (column.key === key) {
-              const dataIndex = column.dataIndex || key;
+              const dataIndex = (column.dataIndex || key) as string;
               const rawData = Array.isArray(dataIndex)
                 ? get(item, dataIndex as string[])
                 : item[dataIndex];
@@ -176,6 +179,7 @@ function ListView<RecordType>(props: ListViewProps<RecordType>) {
             onExpand={() => {
               onTriggerExpand(item);
             }}
+            record={item}
             showActions={showActions}
             rowSupportExpand={!rowExpandable || (rowExpandable && rowExpandable(item))}
             selected={selectedKeySet.has(getRowKey(item, index))}

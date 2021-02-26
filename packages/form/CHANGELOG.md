@@ -2,6 +2,54 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-form@1.16.1...@ant-design/pro-form@1.16.2) (2021-02-25)
+
+### Bug Fixes
+
+- **form:** fix placeholder no work error ([#1991](https://github.com/ant-design/pro-components/issues/1991)) ([353c49d](https://github.com/ant-design/pro-components/commit/353c49dc0b44e193681f38366774a4040982e521))
+- **form:** form list support formlist ([#1995](https://github.com/ant-design/pro-components/issues/1995)) ([94e5d7b](https://github.com/ant-design/pro-components/commit/94e5d7b28bf0d2677da2dab2afbb1388bfaa9502))
+
+## [1.16.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-form@1.16.0...@ant-design/pro-form@1.16.1) (2021-02-23)
+
+### Bug Fixes
+
+- **filed:** fix select show showArrow error ([#1937](https://github.com/ant-design/pro-components/issues/1937)) ([0bc0cda](https://github.com/ant-design/pro-components/commit/0bc0cda1a1de669e6628951b898f7996fac4f948))
+- **form:** modelForm and DrawerForm stopPropagation ([#1939](https://github.com/ant-design/pro-components/issues/1939)) ([22e5049](https://github.com/ant-design/pro-components/commit/22e50498196be00c21698847d9e5ba90d57c0e2f))
+- **form:** fix breakpoint xl width error ([#1946](https://github.com/ant-design/pro-components/issues/1946)) ([00fba77](https://github.com/ant-design/pro-components/commit/00fba77095a7d2abf4b474b77eaa3e1cd2564240))
+- **form:** fix modalForm reset time ([69fe97c](https://github.com/ant-design/pro-components/commit/69fe97cba2e602ae908a68c0aeed11afc20a992f))
+- **form:** ProFormSelect support params ([52a4a40](https://github.com/ant-design/pro-components/commit/52a4a40ea40b4410b4fcfc3a3c4422838f26a187))
+
+# [1.16.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-form@1.15.4...@ant-design/pro-form@1.16.0) (2021-02-22)
+
+### Bug Fixes
+
+- **field:** omit fieldProps and support onChange ([#1886](https://github.com/ant-design/pro-components/issues/1886)) ([8d7c963](https://github.com/ant-design/pro-components/commit/8d7c9639073822daa554db07a5f0c8c0ea334a65))
+- **form:** fix searchText and resetText no work error ([#1872](https://github.com/ant-design/pro-components/issues/1872)) ([9ab0251](https://github.com/ant-design/pro-components/commit/9ab025184084a766f7f0c043be037858054cbf9c))
+- **layout:** use @umijs/use-params ([#1895](https://github.com/ant-design/pro-components/issues/1895)) ([80aac76](https://github.com/ant-design/pro-components/commit/80aac7665115c8f884c473d78c2fcc12ac042bb3))
+- **table:** fix the problem of onInit call sequence ([#1889](https://github.com/ant-design/pro-components/issues/1889)) ([b9e9ae5](https://github.com/ant-design/pro-components/commit/b9e9ae5d57d23b1fc7dd932ea2e225d90f345c85))
+
+### Features
+
+- **field:** support timeRange ([#1884](https://github.com/ant-design/pro-components/issues/1884)) ([4665efc](https://github.com/ant-design/pro-components/commit/4665efca7114737bcd7314ff3de6caad4afe30ae))
+- **form:** support form list ([#1908](https://github.com/ant-design/pro-components/issues/1908)) ([bc34d34](https://github.com/ant-design/pro-components/commit/bc34d34e490d83a73c890e6514d12d451a0161f9))
+- **select:** support SearchSelect ([#1916](https://github.com/ant-design/pro-components/issues/1916)) ([4cb5710](https://github.com/ant-design/pro-components/commit/4cb57100453856e079fe435f70d8fa2f7e62440c))
+
+## [1.15.4](https://github.com/ant-design/pro-components/compare/@ant-design/pro-form@1.15.3...@ant-design/pro-form@1.15.4) (2021-02-04)
+
+### Bug Fixes
+
+- **form:** modal and drawer form close not reset ([#1827](https://github.com/ant-design/pro-components/issues/1827)) ([71d456c](https://github.com/ant-design/pro-components/commit/71d456c5d07222046bfdfcd08de953dd5c269bd0))
+
+## [1.15.3](https://github.com/ant-design/pro-components/compare/@ant-design/pro-form@1.15.2...@ant-design/pro-form@1.15.3) (2021-02-02)
+
+### Bug Fixes
+
+- StepsForm document error ([#1800](https://github.com/ant-design/pro-components/issues/1800)) ([b9b9a1b](https://github.com/ant-design/pro-components/commit/b9b9a1b36a27c9b97ef831f8e0ca35ef8cb169cb))
+
+## [1.15.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-form@1.15.1...@ant-design/pro-form@1.15.2) (2021-01-25)
+
+**Note:** Version bump only for package @ant-design/pro-form
+
 ## [1.15.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-form@1.15.0...@ant-design/pro-form@1.15.1) (2021-01-21)
 
 **Note:** Version bump only for package @ant-design/pro-form

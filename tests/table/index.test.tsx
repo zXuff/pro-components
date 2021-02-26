@@ -95,7 +95,7 @@ describe('BasicTable', () => {
       />,
     );
 
-    await waitForComponentToPaint(html, 1000);
+    await waitForComponentToPaint(html, 2000);
     act(() => {
       expect(html.render()).toMatchSnapshot();
     });
@@ -120,10 +120,39 @@ describe('BasicTable', () => {
         rowKey="key"
       />,
     );
-    await waitForComponentToPaint(html, 1000);
+    await waitForComponentToPaint(html, 1200);
     act(() => {
       expect(html.render()).toMatchSnapshot();
     });
+  });
+
+  it('🎏 ProTable support searchText and  resetText', async () => {
+    const html = mount(
+      <ProTable
+        size="small"
+        options={{
+          fullScreen: false,
+          reload: false,
+          setting: false,
+        }}
+        form={{
+          searchText: 'test',
+          resetText: 'test2',
+        }}
+        columns={[
+          {
+            dataIndex: 'money',
+            valueType: 'money',
+          },
+        ]}
+        dataSource={[]}
+        rowKey="key"
+      />,
+    );
+    await waitForComponentToPaint(html, 1200);
+
+    expect(html.find('.ant-btn.ant-btn-primary').text()).toBe('test');
+    expect(html.find('.ant-btn').at(0).text()).toBe('test2');
   });
 
   it('🎏 do not render setting', async () => {
@@ -145,7 +174,7 @@ describe('BasicTable', () => {
         rowKey="key"
       />,
     );
-    await waitForComponentToPaint(html, 1000);
+    await waitForComponentToPaint(html, 1200);
     act(() => {
       expect(html.render()).toMatchSnapshot();
     });
@@ -1051,7 +1080,7 @@ describe('BasicTable', () => {
         debounceTime={500}
       />,
     );
-    await waitForComponentToPaint(html, 1000);
+    await waitForComponentToPaint(html, 1200);
     for (let i = 0; i < 10; i += 1) {
       ref.current?.reload();
     }

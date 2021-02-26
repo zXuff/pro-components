@@ -7,21 +7,23 @@ import React, {
   useCallback,
   useEffect,
 } from 'react';
-import { Select, Space, Spin } from 'antd';
+import type { SelectProps } from 'antd';
+import { Space, Spin, ConfigProvider } from 'antd';
 import type {
   ProFieldRequestData,
   ProFieldValueEnumType,
   ProSchemaValueEnumMap,
   ProSchemaValueEnumObj,
 } from '@ant-design/pro-utils';
+
+import { useDebounceFn } from '@ant-design/pro-utils';
 import { useDeepCompareEffect } from '@ant-design/pro-utils';
 import useSWR from 'swr';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import { useIntl } from '@ant-design/pro-provider';
-import SizeContext from 'antd/lib/config-provider/SizeContext';
-import type { SelectProps } from 'antd/lib/select';
 
 import LightSelect from './LightSelect';
+import SearchSelect from './SearchSelect';
 import type { ProFieldStatusType } from '../Status';
 import TableStatus, { ProFieldBadgeColor } from '../Status';
 import type { ProFieldFC } from '../../index';
@@ -107,6 +109,28 @@ export const proFieldParsingText = (
   return domText.text || domText;
 };
 
+const Highlight: React.FC<{
+  label: string;
+  words: string[];
+}> = ({ label, words }) => {
+  const reg = new RegExp(words.join('|'), 'g');
+  const token = label.replace(reg, '#@$&#');
+  const elements = token.split('#').map((x) =>
+    x[0] === '@'
+      ? React.createElement(
+          'span',
+          {
+            style: {
+              color: '#1890ff',
+            },
+          },
+          x.slice(1),
+        )
+      : x,
+  );
+  return React.createElement('div', null, ...elements);
+};
+
 /**
  * 获取类型的 type
  *
@@ -173,7 +197,8 @@ export const useFieldFetchData = (
   props: FieldSelectProps & {
     proFieldKey?: React.Key;
   },
-): [boolean, SelectProps<any>['options'], () => void] => {
+): [boolean, SelectProps<any>['options'], (keyWord?: string) => void, () => void] => {
+  const [keyWords, setKeyWords] = useState<string | undefined>(undefined);
   /** Key 是用来缓存请求的，如果不在是有问题 */
   const [cacheKey] = useState(() => {
     if (props.proFieldKey) {
@@ -217,31 +242,52 @@ export const useFieldFetchData = (
 
   const [loading, setLoading] = useState(false);
 
+  const fetchData = async () => {
+    if (!props.request) {
+      return [];
+    }
+    setLoading(true);
+    const loadData = await props.request({ ...props.params, keyWords }, props);
+    setLoading(false);
+    return loadData;
+  };
   const { data, mutate } = useSWR(
     [proFieldKeyRef.current, JSON.stringify(props.params)],
-    async () => {
-      if (props.request) {
-        setLoading(true);
-        const fetchData = await props.request(props.params, props);
-        setLoading(false);
-        return fetchData as Required<ProFieldRequestData>[];
-      }
-      return [];
-    },
+    fetchData,
     {
       revalidateOnFocus: false,
     },
   );
 
+  const fetchDebounce = useDebounceFn(
+    async () => {
+      mutate(fetchData, false);
+    },
+    [],
+    200,
+  );
+
   return [
     loading,
-    props.request ? (data as SelectProps<any>['options']) : options,
-    async () => {
-      if (!props.request) return;
-      setLoading(true);
-      const fetchData = await props.request(props.params, props);
-      setLoading(false);
-      mutate(fetchData, false);
+    props.request
+      ? (data as SelectProps<any>['options'])
+      : options?.filter((item) => {
+          if (!keyWords) return true;
+          if (
+            item?.label?.toString().includes(keyWords) ||
+            item.value.toString().includes(keyWords)
+          ) {
+            return true;
+          }
+          return false;
+        }),
+    (fetchKeyWords?: string) => {
+      setKeyWords(fetchKeyWords);
+      fetchDebounce.run();
+    },
+    () => {
+      setKeyWords(undefined);
+      mutate(async () => [], false);
     },
   ];
 };
@@ -265,24 +311,22 @@ const FieldSelect: ProFieldFC<FieldSelectProps> = (props, ref) => {
     proFieldKey,
     ...rest
   } = props;
+
   const inputRef = useRef();
   const intl = useIntl();
+  const keyWordsRef = useRef<string>('');
 
   useEffect(() => {
     testId += 1;
   }, []);
 
-  const [loading, options, fetchData] = useFieldFetchData(props);
-
-  const size = useContext(SizeContext);
+  const [loading, options, fetchData, resetData] = useFieldFetchData(props);
+  const size = useContext(ConfigProvider.SizeContext);
   useImperativeHandle(ref, () => ({
     ...(inputRef.current || {}),
     fetchData: () => fetchData(),
   }));
 
-  if (loading) {
-    return <Spin />;
-  }
   if (mode === 'read') {
     const optionsValueEnum: ProSchemaValueEnumObj = options?.length
       ? options?.reduce((pre: any, cur) => {
@@ -327,17 +371,30 @@ const FieldSelect: ProFieldFC<FieldSelectProps> = (props, ref) => {
         );
       }
       return (
-        <Select
+        <SearchSelect
+          key="SearchSelect"
           style={{
             minWidth: 100,
           }}
           loading={loading}
           ref={inputRef}
           allowClear
+          notFoundContent={loading ? <Spin size="small" /> : fieldProps?.notFoundContent}
+          fetchData={(keyWord) => {
+            keyWordsRef.current = keyWord;
+            fetchData(keyWord);
+          }}
+          resetData={resetData}
+          optionItemRender={(item) => {
+            if (typeof item.label === 'string' && keyWordsRef.current) {
+              return <Highlight label={item.label} words={[keyWordsRef.current]} />;
+            }
+            return item.label;
+          }}
           {...rest}
           placeholder={intl.getMessage('tableForm.selectPlaceholder', '请选择')}
-          options={options}
           {...fieldProps}
+          options={options}
         />
       );
     };

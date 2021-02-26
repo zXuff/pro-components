@@ -1,11 +1,11 @@
 import React from 'react';
+import type { FormInstance, FormItemProps } from 'antd';
 import { Form } from 'antd';
 import type { ProFieldEmptyText, ProFieldPropsType } from '@ant-design/pro-field';
 import ProField from '@ant-design/pro-field';
 import type { ProFieldValueType, ProSchemaComponentTypes } from '@ant-design/pro-utils';
 import { runFunction } from '@ant-design/pro-utils';
 import { getFieldPropsOrFormItemProps, InlineErrorFormItem } from '@ant-design/pro-utils';
-import type { FormInstance } from 'antd/lib/form/Form';
 
 import type { ProColumnType } from './index';
 
@@ -81,7 +81,7 @@ function defaultRenderText<T>(config: {
   if (config.mode !== 'edit') {
     return (
       <ProField
-        fieldProps={getFieldPropsOrFormItemProps(columnProps?.fieldProps, undefined, columnProps)}
+        fieldProps={getFieldPropsOrFormItemProps(columnProps?.fieldProps, null, columnProps)}
         {...proFieldProps}
       />
     );
@@ -101,16 +101,24 @@ function defaultRenderText<T>(config: {
             ...columnProps,
             isEditable: true,
           },
-        );
+        ) as FormItemProps;
 
+        const messageVariables = {
+          label: (columnProps?.title as string) || '此项',
+          type: (columnProps?.valueType as string) || '文本',
+          ...formItemProps?.messageVariables,
+        };
+
+        const name = spellNamePath(
+          config.recordKey || config.index,
+          columnProps?.key || columnProps?.dataIndex || config.index,
+        );
         const inputDom = (
           <InlineErrorFormItem
-            initialValue={text}
-            name={spellNamePath(
-              config.recordKey || config.index,
-              columnProps?.key || columnProps?.dataIndex || config.index,
-            )}
+            name={name}
             {...formItemProps}
+            messageVariables={messageVariables}
+            initialValue={text || formItemProps?.initialValue}
           >
             <ProField
               fieldProps={getFieldPropsOrFormItemProps(
@@ -147,12 +155,13 @@ function defaultRenderText<T>(config: {
           );
           return (
             <InlineErrorFormItem
-              initialValue={text}
               name={spellNamePath(
                 config.recordKey || config.index,
                 columnProps?.key || columnProps?.dataIndex || config.index,
               )}
               {...formItemProps}
+              initialValue={text || formItemProps?.initialValue}
+              messageVariables={messageVariables}
             >
               {renderDom}
             </InlineErrorFormItem>

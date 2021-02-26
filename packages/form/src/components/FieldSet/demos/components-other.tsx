@@ -15,6 +15,7 @@ import ProForm, {
   ProFormUploadButton,
   ProFormUploadDragger,
   ProFormFieldSet,
+  ProFormTimePicker,
 } from '@ant-design/pro-form';
 
 const Demo = () => (
@@ -60,6 +61,47 @@ const Demo = () => (
         name="useMode"
         label="合同约定生效方式"
       />
+      <ProForm.Group>
+        <ProFormSelect.SearchSelect
+          name="userQuery"
+          label="查询选择器"
+          request={async () => [
+            { label: '全部', value: 'all' },
+            { label: '未解决', value: 'open' },
+            { label: '已解决', value: 'closed' },
+            { label: '解决中', value: 'processing' },
+          ]}
+        />
+        <ProFormSelect.SearchSelect
+          name="userQuery"
+          label="查询选择器"
+          valueEnum={{
+            all: { text: '全部', status: 'Default' },
+            open: {
+              text: '未解决',
+              status: 'Error',
+            },
+            closed: {
+              text: '已解决',
+              status: 'Success',
+            },
+            processing: {
+              text: '解决中',
+              status: 'Processing',
+            },
+          }}
+        />
+        <ProFormSelect.SearchSelect
+          name="userQuery"
+          label="查询选择器"
+          options={[
+            { label: '全部', value: 'all' },
+            { label: '未解决', value: 'open' },
+            { label: '已解决', value: 'closed' },
+            { label: '解决中', value: 'processing' },
+          ]}
+        />
+      </ProForm.Group>
       <ProFormSelect
         name="select-multiple"
         label="Select[multiple]"
@@ -168,6 +210,8 @@ const Demo = () => (
       </ProFormFieldSet>
       <ProForm.Group title="日期相关分组">
         <ProFormDatePicker name="date" label="日期" />
+        <ProFormTimePicker name="time" label="时间" />
+        <ProFormTimePicker.RangePicker name="timeRange" label="时间区间" />
         <ProFormDatePicker.Week name="dateWeek" label="周" />
         <ProFormDatePicker.Month name="dateMonth" label="月" />
         <ProFormDatePicker.Quarter name="dateQuarter" label="季度" />

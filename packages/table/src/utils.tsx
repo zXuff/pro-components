@@ -1,7 +1,7 @@
 import React from 'react';
-import { Space, Tooltip, Form, Typography } from 'antd';
+import type { TablePaginationConfig, TableColumnType } from 'antd';
+import { Space, Form, Typography } from 'antd';
 
-import type { ColumnsType, TablePaginationConfig } from 'antd/lib/table';
 import type {
   ProFieldValueType,
   ProSchemaComponentTypes,
@@ -41,23 +41,12 @@ export const genColumnKey = (key?: React.ReactText | undefined, index?: number):
 };
 
 /**
- * 生成 Ellipsis 的 tooltip
+ * 生成 Copyable 或 Ellipsis 的 dom
  *
  * @param dom
  * @param item
  * @param text
  */
-export const genEllipsis = (dom: React.ReactNode, item: ProColumns<any>, text: string) => {
-  if (!item.ellipsis) {
-    return dom;
-  }
-  return (
-    <Tooltip title={text}>
-      <span>{dom}</span>
-    </Tooltip>
-  );
-};
-
 export const genCopyable = (dom: React.ReactNode, item: ProColumns<any>, text: string) => {
   if (item.copyable || item.ellipsis) {
     return (
@@ -76,7 +65,7 @@ export const genCopyable = (dom: React.ReactNode, item: ProColumns<any>, text: s
               }
             : undefined
         }
-        ellipsis={item.ellipsis}
+        ellipsis={item.ellipsis && text ? { tooltip: text } : false}
       >
         {dom}
       </Typography.Text>
@@ -147,6 +136,7 @@ export function useActionType<T>(
   /** 这里生成action的映射，保证 action 总是使用的最新 只需要渲染一次即可 */
   const userAction: ActionType = {
     ...props.editableUtils,
+    pageInfo: action.pageInfo,
     reload: async (resetPageIndex?: boolean) => {
       // 如果为 true，回到第一页
       if (resetPageIndex) {
@@ -295,9 +285,7 @@ export function columnRender<T>({
   });
 
   const dom: React.ReactNode =
-    mode === 'edit'
-      ? textDom
-      : genEllipsis(genCopyable(textDom, columnProps, renderTextStr), columnProps, renderTextStr);
+    mode === 'edit' ? textDom : genCopyable(textDom, columnProps, renderTextStr);
 
   /** 如果是编辑模式，并且 renderFormItem 存在直接走 renderFormItem */
   if (mode === 'edit') {
@@ -364,7 +352,7 @@ export function genColumnList<T>(props: {
   columnEmptyText: ProFieldEmptyText;
   type: ProSchemaComponentTypes;
   editableUtils: UseEditableUtilType;
-}): (ColumnsType<T>[number] & { index?: number })[] {
+}): (TableColumnType<T> & { index?: number })[] {
   const { columns, map, counter, columnEmptyText, type, editableUtils } = props;
   return (columns
     .map((columnProps, columnsIndex) => {
@@ -432,7 +420,7 @@ export function genColumnList<T>(props: {
       };
       return omitUndefinedAndEmptyArr(tempColumns);
     })
-    .filter((item) => !item.hideInTable) as unknown) as (ColumnsType<T>[number] & {
+    .filter((item) => !item.hideInTable) as unknown) as (TableColumnType<T> & {
     index?: number;
   })[];
 }

@@ -1,8 +1,7 @@
 ﻿import React, { useContext, useEffect, useMemo, useImperativeHandle, useRef } from 'react';
+import type { DrawerProps, FormInstance, FormProps } from 'antd';
 import { ConfigProvider, Drawer } from 'antd';
-import type { FormInstance, FormProps } from 'antd/lib/form';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import type { DrawerProps } from 'antd/lib/drawer';
 import { createPortal } from 'react-dom';
 import omit from 'omit.js';
 
@@ -93,7 +92,8 @@ function DrawerForm<T = Record<string, any>>({
     if (visible) {
       isFirstRender.current = false;
     }
-    if (!visible && drawerProps?.destroyOnClose) {
+    // 再打开的时候重新刷新，会让 initialValues 生效
+    if (visible && drawerProps?.destroyOnClose) {
       formRef.current?.resetFields();
     }
   }, [drawerProps?.destroyOnClose, visible]);
@@ -104,7 +104,7 @@ function DrawerForm<T = Record<string, any>>({
   return (
     <>
       {createPortal(
-        <div>
+        <div onClick={(e) => e.stopPropagation()}>
           <BaseForm
             layout="vertical"
             {...omit(rest, ['visible'])}
@@ -115,6 +115,7 @@ function DrawerForm<T = Record<string, any>>({
                 resetText: '取消',
               },
               resetButtonProps: {
+                preventDefault: true,
                 onClick: (e: any) => {
                   setVisible(false);
                   drawerProps?.onClose?.(e);

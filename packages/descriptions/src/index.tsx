@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { Descriptions, Space, Form } from 'antd';
+import React, { useContext, useEffect } from 'react';
+import type { DescriptionsProps, FormInstance, FormProps } from 'antd';
+import { Descriptions, Space, Form, ConfigProvider } from 'antd';
 import { EditOutlined, CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import toArray from 'rc-util/lib/Children/toArray';
 import ProForm, { ProFormField } from '@ant-design/pro-form';
@@ -21,12 +22,22 @@ import {
 import get from 'rc-util/lib/utils/get';
 import { stringify } from 'use-json-comparison';
 import ProSkeleton from '@ant-design/pro-skeleton';
-import type { FormInstance, FormProps } from 'antd/lib/form';
-import type { DescriptionsItemProps } from 'antd/lib/descriptions/Item';
-import type { DescriptionsProps } from 'antd/lib/descriptions';
 import type { RequestData } from './useFetchData';
 import useFetchData from './useFetchData';
 import type { ProFieldFCMode } from '@ant-design/pro-utils';
+import './index.less';
+
+// todo remove it
+export interface DescriptionsItemProps {
+  prefixCls?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  label?: React.ReactNode;
+  labelStyle?: React.CSSProperties;
+  contentStyle?: React.CSSProperties;
+  children: React.ReactNode;
+  span?: number;
+}
 
 export type ProDescriptionsItemProps<T = Record<string, any>, ValueType = 'text'> = ProSchema<
   T,
@@ -38,6 +49,7 @@ export type ProDescriptionsItemProps<T = Record<string, any>, ValueType = 'text'
     ellipsis?: boolean;
     mode?: ProFieldFCMode;
     children?: React.ReactNode;
+    order?: number;
   },
   ProSchemaComponentTypes,
   ValueType
@@ -162,7 +174,6 @@ export const FieldRender: React.FC<
     <div
       style={{
         margin: '-5px 0',
-        position: 'absolute',
       }}
     >
       <Form.Item noStyle shouldUpdate>
@@ -199,9 +210,9 @@ export const FieldRender: React.FC<
                 style={{
                   margin: 0,
                 }}
-                initialValue={text}
                 name={dataIndex}
                 {...formItemProps}
+                initialValue={text || formItemProps?.initialValue}
               >
                 {dom || (
                   <ProFormField
@@ -346,6 +357,8 @@ const ProDescriptions = <RecordType extends Record<string, any>, ValueType = 'te
     ...rest
   } = props;
 
+  const context = useContext(ConfigProvider.ConfigContext);
+
   const action = useFetchData<RequestData>(
     async () => {
       const data = request ? await request(params) : { data: {} };
@@ -400,12 +413,19 @@ const ProDescriptions = <RecordType extends Record<string, any>, ValueType = 'te
       }
       return item.props;
     });
-    return [...childrenColumns, ...(columns || [])].filter((item) => {
-      if (['index', 'indexBorder'].includes(item.valueType)) {
-        return false;
-      }
-      return !item.hideInDescriptions;
-    });
+    return [...(columns || []), ...childrenColumns]
+      .filter((item) => {
+        if (['index', 'indexBorder'].includes(item.valueType)) {
+          return false;
+        }
+        return !item.hideInDescriptions;
+      })
+      .sort((a, b) => {
+        if (b.order || a.order) {
+          return (b.order || 0) - (a.order || 0);
+        }
+        return (b.index || 0) - (a.index || 0);
+      });
   };
 
   const { options, children } = schemaToDescriptionsItem(
@@ -424,10 +444,19 @@ const ProDescriptions = <RecordType extends Record<string, any>, ValueType = 'te
     title = <LabelIconTip label={rest.title} tooltip={rest.tooltip || rest.tip} />;
   }
 
+  const className = context.getPrefixCls('pro-descriptions');
+
   return (
     <ErrorBoundary>
-      <FormComponent component={false} submitter={false} {...formProps} onFinish={undefined}>
+      <FormComponent
+        form={props.editable?.form}
+        component={false}
+        submitter={false}
+        {...formProps}
+        onFinish={undefined}
+      >
         <Descriptions
+          className={className}
           {...rest}
           extra={
             rest.extra ? (

@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-field@1.10.1...@ant-design/pro-field@1.10.2) (2021-02-25)
+
+### Bug Fixes
+
+- **form:** fix placeholder no work error ([#1991](https://github.com/ant-design/pro-components/issues/1991)) ([353c49d](https://github.com/ant-design/pro-components/commit/353c49dc0b44e193681f38366774a4040982e521))
+- **from:** should support disable ([#2002](https://github.com/ant-design/pro-components/issues/2002)) ([d63ef16](https://github.com/ant-design/pro-components/commit/d63ef1615a3b5cc416b925c7ab6316e7d0389b44))
+
+## [1.10.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-field@1.10.0...@ant-design/pro-field@1.10.1) (2021-02-23)
+
+### Bug Fixes
+
+- **filed:** fix select show showArrow error ([#1937](https://github.com/ant-design/pro-components/issues/1937)) ([0bc0cda](https://github.com/ant-design/pro-components/commit/0bc0cda1a1de669e6628951b898f7996fac4f948))
+- **form:** fix error onchange params ([#1955](https://github.com/ant-design/pro-components/issues/1955)) ([e4ba51e](https://github.com/ant-design/pro-components/commit/e4ba51e20838d7b5e515575373f7ae94093966fc))
+
+# [1.10.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-field@1.9.4...@ant-design/pro-field@1.10.0) (2021-02-22)
+
+### Bug Fixes
+
+- **field:** omit fieldProps and support onChange ([#1886](https://github.com/ant-design/pro-components/issues/1886)) ([8d7c963](https://github.com/ant-design/pro-components/commit/8d7c9639073822daa554db07a5f0c8c0ea334a65))
+
+### Features
+
+- **field:** select support Debounce fetch ([1f1afc8](https://github.com/ant-design/pro-components/commit/1f1afc8c6e5367b3a14bc4cd656340184c859b60))
+- **field:** support timeRange ([#1884](https://github.com/ant-design/pro-components/issues/1884)) ([4665efc](https://github.com/ant-design/pro-components/commit/4665efca7114737bcd7314ff3de6caad4afe30ae))
+- **select:** support SearchSelect ([#1916](https://github.com/ant-design/pro-components/issues/1916)) ([4cb5710](https://github.com/ant-design/pro-components/commit/4cb57100453856e079fe435f70d8fa2f7e62440c))
+
+## [1.9.4](https://github.com/ant-design/pro-components/compare/@ant-design/pro-field@1.9.3...@ant-design/pro-field@1.9.4) (2021-02-04)
+
+**Note:** Version bump only for package @ant-design/pro-field
+
+## [1.9.3](https://github.com/ant-design/pro-components/compare/@ant-design/pro-field@1.9.2...@ant-design/pro-field@1.9.3) (2021-02-02)
+
+**Note:** Version bump only for package @ant-design/pro-field
+
+## [1.9.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-field@1.9.1...@ant-design/pro-field@1.9.2) (2021-01-25)
+
+**Note:** Version bump only for package @ant-design/pro-field
+
 ## [1.9.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-field@1.9.0...@ant-design/pro-field@1.9.1) (2021-01-21)
 
 ### Bug Fixes

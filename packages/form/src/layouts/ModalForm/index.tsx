@@ -1,7 +1,6 @@
 ﻿import React, { useContext, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import { Modal, ConfigProvider } from 'antd';
-import type { FormInstance, FormProps } from 'antd/lib/form';
-import type { ModalProps } from 'antd/lib/modal';
+import type { FormInstance, ModalProps, FormProps } from 'antd';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import omit from 'omit.js';
 import { createPortal } from 'react-dom';
@@ -95,7 +94,8 @@ function ModalForm<T = Record<string, any>>({
     if (visible) {
       isFirstRender.current = false;
     }
-    if (!visible && modalProps?.destroyOnClose) {
+    // 再打开的时候重新刷新，会让 initialValues 生效
+    if (visible && modalProps?.destroyOnClose) {
       formRef.current?.resetFields();
     }
   }, [modalProps?.destroyOnClose, visible]);
@@ -105,7 +105,7 @@ function ModalForm<T = Record<string, any>>({
   return (
     <>
       {createPortal(
-        <div>
+        <div onClick={(e) => e.stopPropagation()}>
           <BaseForm
             layout="vertical"
             {...omit(rest, ['visible'])}
@@ -129,6 +129,7 @@ function ModalForm<T = Record<string, any>>({
                 type: (modalProps?.okType as 'text') || 'primary',
               },
               resetButtonProps: {
+                preventDefault: true,
                 onClick: (e) => {
                   modalProps?.onCancel?.(e);
                   setVisible(false);

@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.3](https://github.com/ant-design/pro-components/compare/@ant-design/pro-list@1.5.2...@ant-design/pro-list@1.5.3) (2021-02-25)
+
+### Bug Fixes
+
+- **list:** list selectedRow ([#1967](https://github.com/ant-design/pro-components/issues/1967)) ([c582639](https://github.com/ant-design/pro-components/commit/c5826392a6b8be8808a5cb5f82c6a0b759197374))
+
+## [1.5.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-list@1.5.1...@ant-design/pro-list@1.5.2) (2021-02-23)
+
+**Note:** Version bump only for package @ant-design/pro-list
+
+## [1.5.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-list@1.5.0...@ant-design/pro-list@1.5.1) (2021-02-22)
+
+### Bug Fixes
+
+- **layout:** use @umijs/use-params ([#1895](https://github.com/ant-design/pro-components/issues/1895)) ([80aac76](https://github.com/ant-design/pro-components/commit/80aac7665115c8f884c473d78c2fcc12ac042bb3))
+
+# [1.5.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-list@1.4.0...@ant-design/pro-list@1.5.0) (2021-02-04)
+
+### Bug Fixes
+
+- **list:** fix list item no key error ([#1836](https://github.com/ant-design/pro-components/issues/1836)) ([2690cd6](https://github.com/ant-design/pro-components/commit/2690cd6d81dc99e86b136405afd289d4b6eb9316))
+
+### Features
+
+- **list:** ProList support renderItem ([#1824](https://github.com/ant-design/pro-components/issues/1824)) ([8f64e3d](https://github.com/ant-design/pro-components/commit/8f64e3dede6ece981c445f4ac4f80e6d410fc7ed))
+
+# [1.4.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-list@1.3.5...@ant-design/pro-list@1.4.0) (2021-02-02)
+
+### Features
+
+- **list:** proList support checkox alert ([#1821](https://github.com/ant-design/pro-components/issues/1821)) ([8784360](https://github.com/ant-design/pro-components/commit/8784360b3238064c67d1782ad67d9aecbfa4a490))
+
+## [1.3.5](https://github.com/ant-design/pro-components/compare/@ant-design/pro-list@1.3.4...@ant-design/pro-list@1.3.5) (2021-01-25)
+
+### Bug Fixes
+
+- **table:** fix the problem that it still executes when polling=false ([#1747](https://github.com/ant-design/pro-components/issues/1747)) ([5c8ecfa](https://github.com/ant-design/pro-components/commit/5c8ecfa5ad36a558315089455d4e29dc22aa8b3c))
+
 ## [1.3.4](https://github.com/ant-design/pro-components/compare/@ant-design/pro-list@1.3.3...@ant-design/pro-list@1.3.4) (2021-01-21)
 
 **Note:** Version bump only for package @ant-design/pro-list

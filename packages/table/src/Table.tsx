@@ -6,12 +6,12 @@ import React, {
   useImperativeHandle,
   useEffect,
 } from 'react';
+import type { TablePaginationConfig } from 'antd';
 import { Table, ConfigProvider, Form, Card, Spin } from 'antd';
 import type { ParamsType } from '@ant-design/pro-provider';
 import { useIntl, ConfigProviderWrap } from '@ant-design/pro-provider';
 import classNames from 'classnames';
 import { stringify } from 'use-json-comparison';
-import type { TablePaginationConfig } from 'antd/lib/table';
 import type { TableCurrentDataSource, SorterResult, SortOrder } from 'antd/lib/table/interface';
 import {
   useDeepCompareEffect,
@@ -389,7 +389,7 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
           _timestamp: Date.now(),
           ...pageInfo,
         };
-        const omitParams = omit(beforeSearchSubmit(submitParams), Object.keys(pageInfo));
+        const omitParams = omit(beforeSearchSubmit(submitParams), Object.keys(pageInfo!));
         setFormSearch(omitParams);
         if (!firstLoad) {
           // back first page
@@ -413,7 +413,10 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
           })
         : {};
 
-      const omitParams = omit(beforeSearchSubmit({ ...value, ...pageInfo }), Object.keys(pageInfo));
+      const omitParams = omit(
+        beforeSearchSubmit({ ...value, ...pageInfo }),
+        Object.keys(pageInfo!),
+      );
       setFormSearch(omitParams);
       // back first page
       action.setPageInfo({
@@ -470,7 +473,7 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
     if (toolBarRender === false) {
       return null;
     }
-    if (options === false && !headerTitle && !toolBarRender && !toolbar) {
+    if (options === false && !headerTitle && !toolBarRender && !toolbar && !isLightFilter) {
       return null;
     }
     /** 根据表单类型的不同决定是否生成 toolbarProps */
@@ -603,26 +606,38 @@ const ProTable = <T extends Record<string, any>, U extends ParamsType, ValueType
   const tableLayout = props.columns?.some((item) => item.ellipsis) ? 'fixed' : 'auto';
 
   /** 默认的 table dom，如果是编辑模式，外面还要包个 form */
-  const baseTableDom = action.dataSource ? (
-    <Form component={false} onValuesChange={editableUtils.onValuesChange} key="table">
-      <Table<T> {...getTableProps()} rowKey={rowKey} tableLayout={tableLayout} />
-    </Form>
-  ) : (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 50,
-      }}
-    >
-      <Spin size="large" />
-    </div>
-  );
+  const baseTableDom =
+    action.dataSource !== undefined || manualRequest ? (
+      <Form
+        component={false}
+        form={props.editable?.form}
+        onValuesChange={editableUtils.onValuesChange}
+        key="table"
+      >
+        <Table<T> {...getTableProps()} rowKey={rowKey} tableLayout={tableLayout} />
+      </Form>
+    ) : (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: 50,
+        }}
+      >
+        <Spin size="large" />
+      </div>
+    );
 
   /** 自定义的 render */
   const tableDom = props.tableViewRender
-    ? props.tableViewRender(getTableProps(), baseTableDom)
+    ? props.tableViewRender(
+        {
+          ...getTableProps(),
+          rowSelection,
+        },
+        baseTableDom,
+      )
     : baseTableDom;
 
   /** Table 区域的 dom，为了方便 render */
@@ -717,5 +732,7 @@ const ProviderWarp = <
     </Container.Provider>
   );
 };
+
+ProviderWarp.Summary = Table.Summary;
 
 export default ProviderWarp;

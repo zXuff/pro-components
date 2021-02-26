@@ -1,7 +1,7 @@
 ﻿import React, { useCallback, useMemo, useRef, useState } from 'react';
 import type { GetRowKey } from 'antd/lib/table/interface';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import type { FormInstance } from 'antd/lib/form';
+import type { FormInstance } from 'antd';
 import useLazyKVMap from 'antd/lib/table/hooks/useLazyKVMap';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useIntl } from '@ant-design/pro-provider';
@@ -15,6 +15,9 @@ export type RowEditableType = 'single' | 'multiple';
 export type RecordKey = React.Key | React.Key[];
 
 export const toNumber = (recordKey: string) => {
+  if (recordKey.startsWith('0')) {
+    return recordKey;
+  }
   return Number.isNaN((recordKey as unknown) as number) ? recordKey : Number(recordKey);
 };
 
@@ -45,6 +48,8 @@ export type ActionRenderFunction<T> = (
 ) => React.ReactNode[];
 
 export type RowEditableConfig<T> = {
+  /** @name 控制可编辑表格的 form */
+  form?: FormInstance;
   /**
    * @type single | multiple
    * @name 编辑的类型，支持单选和多选

@@ -2,6 +2,47 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.14.4](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.14.3...@ant-design/pro-layout@6.14.4) (2021-02-25)
+
+**Note:** Version bump only for package @ant-design/pro-layout
+
+## [6.14.3](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.14.2...@ant-design/pro-layout@6.14.3) (2021-02-23)
+
+### Bug Fixes
+
+- **layout:** layout sync url diff params ([#1956](https://github.com/ant-design/pro-components/issues/1956)) ([d68c401](https://github.com/ant-design/pro-components/commit/d68c401dbecf744106dda402e53fdeda0c2fc4d7))
+- **layout:** menu item add title config ([#1944](https://github.com/ant-design/pro-components/issues/1944)) ([5ae3ca1](https://github.com/ant-design/pro-components/commit/5ae3ca1ad0b000097da0fadca1ae9bcf0eac6b98))
+
+## [6.14.2](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.14.1...@ant-design/pro-layout@6.14.2) (2021-02-22)
+
+### Bug Fixes
+
+- **layout:** delete basiclayout.less unnecessary semicolon ([#1877](https://github.com/ant-design/pro-components/issues/1877)) ([b6031f2](https://github.com/ant-design/pro-components/commit/b6031f2347c0a3aa4cbd3e24b4ef812a5b812d9a))
+- **layout:** use @umijs/use-params ([#1895](https://github.com/ant-design/pro-components/issues/1895)) ([80aac76](https://github.com/ant-design/pro-components/commit/80aac7665115c8f884c473d78c2fcc12ac042bb3))
+
+## [6.14.1](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.14.0...@ant-design/pro-layout@6.14.1) (2021-02-04)
+
+### Bug Fixes
+
+- **layout:** container add width:100% ([#1845](https://github.com/ant-design/pro-components/issues/1845)) ([e3d9f32](https://github.com/ant-design/pro-components/commit/e3d9f32d33607e84a6b80772d6b805cdd7f0b41c))
+
+# [6.14.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.13.0...@ant-design/pro-layout@6.14.0) (2021-02-02)
+
+### Bug Fixes
+
+- **layout:** footer use div ([#1816](https://github.com/ant-design/pro-components/issues/1816)) ([49ad6d7](https://github.com/ant-design/pro-components/commit/49ad6d7bb92356de0e63e52884379a2e6970702b))
+
+### Features
+
+- **layout:** support menu.autoClose ([#1815](https://github.com/ant-design/pro-components/issues/1815)) ([433d20c](https://github.com/ant-design/pro-components/commit/433d20c4ec62ff9d8d2f23792370fd6ff9bdef58))
+
+# [6.13.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.12.0...@ant-design/pro-layout@6.13.0) (2021-01-25)
+
+### Features
+
+- **layout:** ProLayout support breadcrumbProps ([#1757](https://github.com/ant-design/pro-components/issues/1757)) ([f15bba8](https://github.com/ant-design/pro-components/commit/f15bba862ff43b349cd91bf2906e29dddf8637f0))
+- **layout:** prolayout support iconPrefixes ([#1750](https://github.com/ant-design/pro-components/issues/1750)) ([b5357a6](https://github.com/ant-design/pro-components/commit/b5357a6c9145792884a131a2ed893661a87ee08a))
+
 # [6.12.0](https://github.com/ant-design/pro-components/compare/@ant-design/pro-layout@6.11.1...@ant-design/pro-layout@6.12.0) (2021-01-21)
 
 ### Features

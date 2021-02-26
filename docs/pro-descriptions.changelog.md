@@ -9,6 +9,18 @@ group:
 
 # Change Log
 
+## @ant-design/pro-descriptions@1.6.0
+
+`2021-02-22`
+
+- 🐛 fix(descriptions): fix descriptions editor error [#1878](https://github.com/ant-design/pro-components/pull/1878) [@chenshuai2144](https://github.com/chenshuai2144)
+
+## @ant-design/pro-descriptions@1.5.0
+
+`2021-02-02`
+
+- 💥 feat(descriptions): descriptions Columns support order [#1763](https://github.com/ant-design/pro-components/pull/1763) [@chenshuai2144](https://github.com/chenshuai2144)
+
 ## @ant-design/pro-descriptions@1.4.8
 
 `2021-01-18`

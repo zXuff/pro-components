@@ -533,7 +533,7 @@ exports[`Field 🐴 edit and no plain 1`] = `
                 class="ant-descriptions-item-content"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                  class="ant-select ant-pro-filed-search-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
                   style="min-width:100px"
                   text="open"
                 >
@@ -615,7 +615,7 @@ exports[`Field 🐴 edit and no plain 1`] = `
                 class="ant-descriptions-item-content"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                  class="ant-select ant-pro-filed-search-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
                   style="min-width:100px"
                   text="open"
                 >
@@ -1719,7 +1719,7 @@ exports[`Field 🐴 edit and plain 1`] = `
                 class="ant-descriptions-item-content"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                  class="ant-select ant-pro-filed-search-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
                   style="min-width:100px"
                   text="open"
                 >
@@ -1801,7 +1801,7 @@ exports[`Field 🐴 edit and plain 1`] = `
                 class="ant-descriptions-item-content"
               >
                 <div
-                  class="ant-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
+                  class="ant-select ant-pro-filed-search-select ant-select-single ant-select-allow-clear ant-select-show-arrow"
                   style="min-width:100px"
                   text="open"
                 >
@@ -2624,6 +2624,12 @@ exports[`Field 🐴 options support one dom 1`] = `
     </button>
   </div>
 </div>
+`;
+
+exports[`Field 🐴 percent support unit string 1`] = `
+<span>
+  + 100.00%
+</span>
 `;
 
 exports[`Field 🐴 percent valueType is Object 1`] = `
